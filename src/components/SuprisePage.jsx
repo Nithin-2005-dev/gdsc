@@ -32,8 +32,8 @@ if(blessings==null){
 }
   return (
     <>
-    <img src="src\assets\flying-doves-group.png" alt="" className='fixed rotate-45 w-1/6 top-1/4 bird -z-20 md:1-1/12'/>
-    <img src="src\assets\fly.png" alt="" className='fixed -z-10 w-1/6 rotate-45 top-1/2 rocket md:w-1/12'/>
+    <img src="https://i.imghippo.com/files/yWaTC1724239436.png" alt="" className='fixed rotate-45 w-1/6 top-1/4 bird -z-20 md:1-1/12'/>
+    <img src="src\assets\fly.pnghttps://i.imghippo.com/files/VceQd1724239412.png" alt="" className='fixed -z-10 w-1/6 rotate-45 top-1/2 rocket md:w-1/12'/>
     <div>
     <div className='flex justify-center'>
     <div className='fixed -z-10 text-white p-3 text-4xl edu-vic-wa-nt-beginner text-center'>
@@ -44,7 +44,7 @@ if(blessings==null){
     </div>
     </div>
       <img src="src\assets\lowerScene.jpg" alt="" className='fixed -z-50 h-screen w-full'/>
-      <img src="src\assets\upperMountain.png" alt="" className='z-20 h-screen w-full'/>
+      <img src="https://i.imghippo.com/files/SPbkZ1724239271.png" alt="" className='z-20 h-screen w-full'/>
     </div>
     <div className='bg-slate-950 text-white flex flex-col'>
     {blessings.map((ele)=>{

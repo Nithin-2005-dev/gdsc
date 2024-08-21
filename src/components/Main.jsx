@@ -12,7 +12,7 @@ const Main = () => {
       <Environment preset='studio'></Environment>
       </Canvas>
     </div>
-    <img src="src\assets\upper.png" alt="" className='w-1/4 h-1/4 absolute z-30 ml-4'/>
+    <img src="https://i.imghippo.com/files/5Okym1724239313.png" alt="" className='w-1/4 h-1/4 absolute z-30 ml-4'/>
     <div className='bg-slate-900 h-1/2 w-1/2 absolute top-1/4 p-2 text-white space-grotesk text-lg md:text-2xl'  style={{backgroundColor:"#674188"}}>
     Wishing you a birthday filled with endless joy, unforgettable memories, and all the happiness your heart can hold. May this year bring you closer to your dreams. Happy Birthday!
     </div>
