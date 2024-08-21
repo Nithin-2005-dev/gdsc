@@ -43,7 +43,7 @@ if(blessings==null){
         </div>
     </div>
     </div>
-      <img src="https://i.imghippo.com/files/pk2SE1724239745.jpg" alt="" className='fixed -z-50 h-screen w-full'/>
+      <img src="https://i.imghippo.com/files/pk2SE1724239745.jpg" alt="" id="ro" className='fixed -z-50 h-screen w-full'/>
       <img src="https://i.imghippo.com/files/SPbkZ1724239271.png" alt="" className='z-20 h-screen w-full'/>
     </div>
     <div className='bg-slate-950 text-white flex flex-col'>

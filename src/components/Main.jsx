@@ -1,12 +1,13 @@
 import { Environment, OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import React from 'react'
+import React, { Suspense } from 'react'
 import Tent from './Tent'
 import Cake from './Cake'
+import { BallTriangle } from 'react-loader-spinner'
 const Main = () => {
   return (
     <div className='h-screen bg-slate-900' style={{backgroundColor:"#674188"}}>
-        <div className='bg-slate-900 absolute right-0'  style={{backgroundColor:"#674188"}}>
+    <div className='bg-slate-900 absolute right-0'  style={{backgroundColor:"#674188"}}>
       <Canvas style={{height:"75vh", width:"50vw"}}>
       <Cake></Cake>
       <Environment preset='studio'></Environment>
