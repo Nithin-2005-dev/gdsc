@@ -17,7 +17,7 @@ const Wish = () => {
         Click on the suprise box to open
       </div>
       <ReactAudioPlayer
-    src='src\components\song.mp3' autoPlay></ReactAudioPlayer>
+    src='https://audio.jukehost.co.uk/F8NebSnqf6zkJhYgGqls40ErVrNbdAvu' autoPlay></ReactAudioPlayer>
       <Link to="/suprise" className='absolute' style={{backgroundColor:"#674188",height:"70vh",width:"100vw"}} >
     <Canvas>
       <Environment preset='forest'/>

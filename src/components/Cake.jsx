@@ -15,7 +15,7 @@ import { useFrame } from '@react-three/fiber';
 
 export default function Cake(props) {
   const { nodes, materials } = useGLTF('/strawberry_cake.glb')
-  const size=window.innerWidth<800?0.5:0.6;
+  const size=window.innerWidth<500?0.4:0.6;
   const ref=useRef();
   useFrame((state,delta)=>{
     ref.current.rotation.y+=delta;
