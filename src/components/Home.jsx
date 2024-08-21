@@ -16,7 +16,7 @@ const Home = () => {
         console.log("playing")
       }}>Cheers to you,My friend! wishing you a birthday as amazing as you are!</div>
       <div className='flex justify-center'>
-      <Link to="/memories" className='absolute bottom-1/4 w-1/2 matemasie-regular p-3 rounded-t-full text-neutral-600 text-md md:w-1/3 md:xl md:bottom-1/3' style={{backgroundColor:"#B4D6CD"}}>
+      <Link to="/memories" className='absolute bottom-1/4 w-1/2 matemasie-regular p-3 rounded-3xl text-neutral-600 text-md md:w-1/3 md:xl md:bottom-1/3' style={{backgroundColor:"#B4D6CD"}}>
       <div className='text-center' >click to blow the candle<GiCandleLight className='inline-block text-2xl text-yellow-200' style={{backgroundColor:"#B4D6CD"}}/></div>
       </Link>
       </div>
