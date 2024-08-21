@@ -6,6 +6,7 @@ import { Environment } from '@react-three/drei'
 import Box from './Box'
 import { Link } from 'react-router-dom'
 import { BallTriangle } from 'react-loader-spinner'
+import ReactAudioPlayer from 'react-audio-player'
 
 const Wish = () => {
   return (
@@ -15,6 +16,8 @@ const Wish = () => {
       <div style={{backgroundColor:"#674188"}} className='jersey-10-regular text-center text-4xl text-orange-200 cursor-pointer'>
         Click on the suprise box to open
       </div>
+      <ReactAudioPlayer
+    src='src\components\song.mp3' autoPlay></ReactAudioPlayer>
       <Link to="/suprise" className='absolute' style={{backgroundColor:"#674188",height:"70vh",width:"100vw"}} >
     <Canvas>
       <Environment preset='forest'/>

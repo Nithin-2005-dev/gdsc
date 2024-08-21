@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactAudioPlayer from 'react-audio-player';
 import { GiCandleLight } from "react-icons/gi";
 import {Link} from 'react-router-dom'
 const Home = () => {
@@ -10,10 +11,13 @@ const Home = () => {
     <div className='flex justify-center items-center'>
     <div style={{color:"#4F1787"}}
       className='text-2xl font-extrabold shadow-slate-400 shadow-lg p-3 w-1/2 absolute top-1/4 border-pink-300 rounded-xl [text-shadow:_0_3px_0_rgb(50_0_150_/_40%)] jersey-10-regular entryCard right-1/4 capitalize md:text-4xl'
-      >Cheers to you,My friend! wishing you a birthday as amazing as you are!</div>
+      onClick={()=>{
+        audio.play();
+        console.log("playing")
+      }}>Cheers to you,My friend! wishing you a birthday as amazing as you are!</div>
       <div className='flex justify-center'>
       <Link to="/memories" className='absolute bottom-1/4 w-1/2 matemasie-regular p-3 rounded-t-full text-neutral-600 text-md md:w-1/3 md:xl md:bottom-1/3' style={{backgroundColor:"#B4D6CD"}}>
-      <div className='text-center'>click to blow the candle<GiCandleLight className='inline-block text-2xl text-yellow-200' style={{backgroundColor:"#B4D6CD"}}/></div>
+      <div className='text-center' >click to blow the candle<GiCandleLight className='inline-block text-2xl text-yellow-200' style={{backgroundColor:"#B4D6CD"}}/></div>
       </Link>
       </div>
     </div>
