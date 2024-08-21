@@ -26,13 +26,13 @@ body{
   
 }
 .dog{
-  animation: move1 10s ease-in-out 0s infinite alternate;
+  animation: move1 10s ease-in-out 0s infinite;
 }
 @keyframes move1 {
   from{
-    translate: 10vw;
+    translate: 120vw;
   }to{
-    translate: 80vw ;
+    translate: -20vw ;
   }
 }
 .matemasie-regular {
