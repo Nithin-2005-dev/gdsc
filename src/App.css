@@ -1,0 +1,81 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #F6EACB;
+}
+.jersey-10-regular {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.entryCard{
+  background-color: #e8e1ce;
+}
+.dino{
+  animation: move 5s ease-in-out 0s infinite alternate;
+}
+@keyframes move {
+  from{
+    translate: 0 5vh;
+  }to{
+    translate: 0 50vh;
+  }
+  
+}
+.dog{
+  animation: move1 10s ease-in-out 0s infinite alternate;
+}
+@keyframes move1 {
+  from{
+    translate: 10vw;
+  }to{
+    translate: 80vw ;
+  }
+}
+.matemasie-regular {
+  font-family: "Matemasie", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.edu-vic-wa-nt-beginner{
+  font-family: "Edu VIC WA NT Beginner", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.rocket{
+  animation: move3 15s ease-in-out 0s infinite;
+}
+@keyframes move3 {
+  0%{
+    translate: 10vw 0vh;
+  }100%{
+    translate: 130vw -90vh;
+  }
+}
+.bird{
+  animation: move4 20s ease-in-out 0s infinite;
+}
+@keyframes move4 {
+  0%{
+    translate: -30vw;
+  }100%{
+    translate: 120vw;
+  }
+}
+.card{
+  border-radius: 0px 20% 0px 20%;
+}
