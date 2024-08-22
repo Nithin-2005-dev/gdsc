@@ -1,37 +1,68 @@
-import React, { useRef } from 'react'
+import { AnimatePresence,motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react'
 import { BiLabel } from 'react-icons/bi';
 import { RiFilePaper2Fill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
+import { db } from './Firebase';
+import firebase from 'firebase/compat/app';
+import { addDoc, collection, doc, getDoc, getDocs} from 'firebase/firestore';
+let blessings=[{
+    id:1,
+    msg:"Dear son, from the moment you were born, you've brought nothing but joy into our lives. Watching you grow into the amazing person you are today has been our greatest gift. Happy Birthday, sweetheart! May all your dreams come true."   
+   },{
+       id:2,
+       msg:"To my amazing brother, having you as my sibling is the best gift life could give. Here's to more laughter, more adventures, and more unforgettable moments together. Happy Birthday!"
+   },{
+       id:3,
+       msg:"To my amazing brother, having you as my sibling is the best gift life could give. Here's to more laughter, more adventures, and more unforgettable moments together. Happy Birthday!"
+   },{
+       id:4,
+       msg:"Happy Birthday to my partner-in-crime! Every moment with you is an adventure, and I can’t wait to create even more memories together. Cheers to another year of friendship!"
+   }];
+   getDocs(collection(db,"msgs"))
+   .then((snapshot)=>{
+    snapshot.docs.map((ele)=>{
+        blessings.push(ele.data());
+        console.log(ele.data())
+    })
+   })
 const SuprisePage = () => {
     const navigate=useNavigate();
     const msgRef=useRef();
     const handleSubmit=()=>{
-        blessings.push({id:blessings.length+1,msg:msgRef.current.value});
-        msgRef.current.value="";
+        addDoc(collection(db,"msgs"),{id:blessings.length+1,msg:msgRef.current.value})
+        blessings.push({id:blessings.length+1,msg:msgRef.current.value})
         localStorage.setItem("msgs",JSON.stringify(blessings));
+        msgRef.current.value="";
+        getData();
         navigate("/suprise")
     }
-let blessings=JSON.parse(localStorage.getItem("msgs"));
-if(blessings==null){
-    blessings=[{
-        id:1,
-        msg:"Dear son, from the moment you were born, you've brought nothing but joy into our lives. Watching you grow into the amazing person you are today has been our greatest gift. Happy Birthday, sweetheart! May all your dreams come true."
-    },{
-        id:2,
-        msg:"To my amazing brother, having you as my sibling is the best gift life could give. Here's to more laughter, more adventures, and more unforgettable moments together. Happy Birthday!"
-    },
-    {
-        id:3,
-        msg:"Happy Birthday, my dear grandson! You've always brought sunshine into our lives. We wish you all the happiness in the world and hope your day is as wonderful as you are."
-    },
-    {
-        id:4,
-        msg:"Happy Birthday to my partner-in-crime! Every moment with you is an adventure, and I can’t wait to create even more memories together. Cheers to another year of friendship!"
+    const getData=()=>{
+        getDocs(collection(db,"msgs"))
+        .then(snapshot=>{
+            snapshot.docs.map((ele)=>{
+                blessings.push(ele);
+            })
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        localStorage.setItem("msgs",JSON.stringify(blessings));
     }
-]
-}
   return (
     <>
+     <AnimatePresence>
+        <motion.div initial={{opacity:0}}
+        animate={{
+            opacity:1,
+            transition:{
+                duration:3,
+            }
+        }}
+        exit={{
+            opacity:0,
+        }}
+        >
     <img src="https://i.imghippo.com/files/yWaTC1724239436.png" alt="" className='fixed rotate-45 w-1/6 top-1/4 bird -z-20 md:1-1/12'/>
     <img src="https://i.imghippo.com/files/VceQd1724239412.png" alt="" className='fixed -z-10 w-1/6 rotate-45 top-1/2 rocket md:w-1/12'/>
     <div>
@@ -47,8 +78,8 @@ if(blessings==null){
       <img src="https://i.imghippo.com/files/SPbkZ1724239271.png" alt="" className='z-20 h-screen w-full'/>
     </div>
     <div className='bg-slate-950 text-white flex flex-col'>
-    {blessings.map((ele)=>{
-        return <div className={`w-1/2 p-6 border-2 bg-slate-900 ml-4 mb-3 font-extrabold ${ele.id%2==0?'self-end':''} md:w-1/3 mr-4 card cursor-pointer`}>
+    {blessings!=null && blessings.map((ele)=>{
+        return <div className={`w-1/2 p-6 border-2 bg-slate-900 ml-4 mb-3 font-extrabold ${ele.id%2==0?'self-end':''} md:w-1/3 mr-4 card cursor-pointer`} key={ele.id}>
         {ele.msg}
     </div>
     })}
@@ -61,6 +92,8 @@ if(blessings==null){
     <button onClick={handleSubmit}>Submit</button>
     </div>
     </div>
+    </motion.div>
+    </AnimatePresence>
     </>
   )
 }

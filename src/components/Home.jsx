@@ -1,10 +1,26 @@
+import { AnimatePresence,motion } from 'framer-motion';
 import React from 'react'
 import ReactAudioPlayer from 'react-audio-player';
 import { GiCandleLight } from "react-icons/gi";
 import {Link} from 'react-router-dom'
 const Home = () => {
   return (
-    <>
+    <AnimatePresence>
+    <motion.div initial={{
+      opacity:0,
+    }}
+    animate={
+      {
+        opacity:1,
+      }
+    }
+    exit={{
+      opacity:0,
+      transition:{
+        duration:5,
+      }
+    }}
+    >
     <img src="https://i.imghippo.com/files/PLgGH1724239230.png" alt="" className='w-1/6 p-3 m-3 fixed'/>
     <img src="https://i.imghippo.com/files/nrxZ61724239185.png" alt="" className='absolute w-1/4 md:w-1/5 md:right-1/2' style={{height:"23%",right:"35%",top:"1.5%"}}/>
     <img src="https://i.imghippo.com/files/wngqz1724239144.png" alt="" className='h-1/4 w-1/4 absolute right-0 dino md:w-1/6'/>
@@ -22,7 +38,8 @@ const Home = () => {
       </div>
     </div>
     <img src="https://i.imghippo.com/files/5zQzS1724239103.png" alt="" className='w-1/6 dog absolute bottom-0 -z-50'/>
-    </>
+    </motion.div>
+    </AnimatePresence>
   )
 }
 
