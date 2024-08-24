@@ -1,5 +1,5 @@
 import { AnimatePresence,motion } from 'framer-motion';
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BiLabel } from 'react-icons/bi';
 import 'react-toastify/dist/ReactToastify.css';
 import { RiFilePaper2Fill } from "react-icons/ri";
@@ -8,6 +8,7 @@ import { db } from './Firebase';
 import firebase from 'firebase/compat/app';
 import { addDoc, collection, doc, getDoc, getDocs} from 'firebase/firestore';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { useScroll } from '@react-three/drei';
 let i=1;
 let blessings=[{
     id:1,
@@ -29,8 +30,14 @@ let blessings=[{
     })
    })
 const SuprisePage = () => {
+    const [btn,setBtn]=useState(true);
     const navigate=useNavigate();
     const msgRef=useRef();
+    const showAll=()=>{
+        localStorage.setItem("msgs",JSON.stringify(blessings));
+        navigate("/suprise");
+        setBtn(!btn);
+    }
     const handleSubmit=()=>{
         if(msgRef.current.value==""){
             toast.warn('blessing box is empty!!!!', {
@@ -101,6 +108,8 @@ const SuprisePage = () => {
     </div>
     })}
     <div></div>
+    {btn && <button className='self-center font-serif text-xl font-bold m-3 p-1 text-white mb-0 cursor-pointer bg-orange-400 rounded-lg' onClick={showAll}>viewAll</button>}
+
     <div className='self-center font-mono text-2xl font-bold m-6 p-3 text-orange-200 mb-0 cursor-pointer'>
        Blessing box
     </div>
