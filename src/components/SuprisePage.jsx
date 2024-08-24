@@ -1,11 +1,14 @@
 import { AnimatePresence,motion } from 'framer-motion';
 import React, { useEffect, useRef } from 'react'
 import { BiLabel } from 'react-icons/bi';
+import 'react-toastify/dist/ReactToastify.css';
 import { RiFilePaper2Fill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
 import { db } from './Firebase';
 import firebase from 'firebase/compat/app';
 import { addDoc, collection, doc, getDoc, getDocs} from 'firebase/firestore';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
+let i=1;
 let blessings=[{
     id:1,
     msg:"Dear son, from the moment you were born, you've brought nothing but joy into our lives. Watching you grow into the amazing person you are today has been our greatest gift. Happy Birthday, sweetheart! May all your dreams come true."   
@@ -23,19 +26,32 @@ let blessings=[{
    .then((snapshot)=>{
     snapshot.docs.map((ele)=>{
         blessings.push(ele.data());
-        console.log(ele.data())
     })
    })
 const SuprisePage = () => {
     const navigate=useNavigate();
     const msgRef=useRef();
     const handleSubmit=()=>{
+        if(msgRef.current.value==""){
+            toast.warn('blessing box is empty!!!!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
+                localStorage.setItem("msgs",JSON.stringify(blessings));
+        navigate("/suprise");
+            return;
+        }
         addDoc(collection(db,"msgs"),{id:blessings.length+1,msg:msgRef.current.value})
-        blessings.push({id:blessings.length+1,msg:msgRef.current.value})
+        blessings.push({id:blessings[blessings.length-1].id+1,msg:msgRef.current.value})
         localStorage.setItem("msgs",JSON.stringify(blessings));
         msgRef.current.value="";
         getData();
-        navigate("/suprise")
     }
     const getData=()=>{
         getDocs(collection(db,"msgs"))
@@ -48,6 +64,7 @@ const SuprisePage = () => {
             console.log(err);
         })
         localStorage.setItem("msgs",JSON.stringify(blessings));
+        navigate("/suprise");
     }
   return (
     <>
@@ -79,7 +96,7 @@ const SuprisePage = () => {
     </div>
     <div className='bg-slate-950 text-white flex flex-col'>
     {blessings!=null && blessings.map((ele)=>{
-        return <div className={`w-1/2 p-6 border-2 bg-slate-900 ml-4 mb-3 font-extrabold ${ele.id%2==0?'self-end':''} md:w-1/3 mr-4 card cursor-pointer`} key={ele.id}>
+        return <div className={`w-1/2 p-6 border-2 bg-slate-900 ml-4 mb-3 font-extrabold ${(i++)%2==0?'self-end':''} md:w-1/3 mr-4 card cursor-pointer`} key={ele.id}>
         {ele.msg}
     </div>
     })}
@@ -92,6 +109,18 @@ const SuprisePage = () => {
     <button onClick={handleSubmit}>Submit</button>
     </div>
     </div>
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
     </motion.div>
     </AnimatePresence>
     </>
